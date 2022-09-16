@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100;700&family=Arima:wght@100;400;700&display=swap');
+
+:root{
+    --colorPrincipal:#0F2739;
+    --colorPrincipalOscuro:#0c1f2e;
+    --colorSecundario: #FFBF00;
+    --colorButtons: #593FD3;
+    --colorBUttonsCancelar: rgb(172, 32, 32);
+    --colorGraddient1: linear-gradient(85deg, #f747e1 0, #e542e7 16.67%, #cf3eed 33.33%, #b63cf2 50%, #983cf7 66.67%, #733efc 83.33%, #3642ff 100%);
+    --colorGraddient2:  linear-gradient(90deg, #d8c35c 0, #deba54 8.33%, #e4b04c 16.67%, #e9a446 25%, #ed9741 33.33%, #f0893e 41.67%, #f2793c 50%, #f3683d 58.33%, #f35642 66.67%, #f34248 75%, #f22c51 83.33%, #f0095c 91.67%, #ec0068 100%);
+    --colorBlanco: #fff;
+    --colorFondo: #e8e8e8;
+
+    --fontTitles: 'Arima Madurai';
+    --fuentePrincipal: 'Arima';
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box; /*Evita que los inputs se salgan de sus contenedores*/
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+html{
+    font-size: 62.5%;
+    font-family: var(--fuentePrincipal);
+}
+h1{
+    font-size: 3rem;
+    text-align: center;
+    color: var(--colorPrincipal);
+    margin: 0;
+    padding: 0;
+}
+@media (min-width: 610px){ 
+    h1{
+        font-size: 3.5rem;
+    }
+ }
+body{
+    background-color: var(--colorFondo);
+}
+
+.pedido div{
+    display: flex;
+    margin-top: 100px;
+    flex-direction: column;
+    align-items: center;
+}
+.pedido img{
+    z-index: 1;
+    margin: -80px;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    border: solid 5px var(--colorBlanco);
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+.pedido .contenedor{
+    border-radius: 2rem 2rem 0 0;
+    max-width: 700px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    width: 90%;
+    margin-bottom: 0;
+    background: var(--colorBlanco);
+    padding: 2rem 2rem;
+    padding-top: 10rem;
+    -webkit-border-radius: 2rem 2rem 0 0;
+    -moz-border-radius: 2rem 2rem 0 0;
+    -ms-border-radius: 2rem 2rem 0 0;
+    -o-border-radius: 2rem 2rem 0 0;
+}
+.contenedor__datos{
+    margin-bottom: 2rem;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+}
+.contenedor__datos:last-of-type{
+    margin-bottom: none;
+    border: none;
+}
+.contenedor ul{
+    padding: 0;
+    list-style: none;
+    margin-left: 0;
+}
+.contenedor__datos li{
+    list-style: none;
+    padding-left: 0;
+    padding: .5rem 0;
+    font-size: 1.5rem;
+}
+.pedido .contenedor__buttons{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+.pedido .contenedor__buttons .button-pedido{
+    width: 140px;
+    padding: 1rem 0;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+.button-pedido--back{
+    background-color: var(--colorSecundario);
+}
+.button-pedido--back:hover{
+    background-color:#b97f14;
+    color: var(--colorBlanco);
+}
+.button-pedido--back:active{
+    background-color:#b97f14;
+    color: var(--colorBlanco);
+}
+.button-pedido--back:focus{
+    background-color:#b97f14;
+    color: var(--colorBlanco);
+}
+.button-pedido--delete{
+    background-color: rgb(236, 61, 61);
+}
+.button-pedido--delete:hover{
+    background-color: rgb(128, 26, 26);
+    color: var(--colorBlanco);
+}
+.button-pedido--delete:active|{
+    background-color: rgb(128, 26, 26);
+    color: var(--colorBlanco);
+}
+.button-pedido--delete:focus{
+    background-color: rgb(128, 26, 26);
+    color: var(--colorBlanco);
+}

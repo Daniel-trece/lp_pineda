@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/stylePedido.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <title>Información Pedido</title>
+</head>
+<body class="pedido">
+    <div>
+        <% results.forEach(body => {%>
+
+        <img src="/img/products/<%=body.img%>" alt="">
+        <main class="contenedor">
+            <article class="contenedor__datos">
+                <h2>Datos del Pedido</h2>
+                <ul>
+                    <li><b>Nombre del Producto:</b> <%=body.nombre_producto%></li>
+                    <li><b>ID del Pedido:</b> <%=body.ID_pedido%></li>
+                    <li><b>Talla:</b> <%=body.talla%></li>
+                    <li><b>Precio:</b> MXN$<%=body.precio%>.00</li>
+                    <li><b>Cantidad:</b> <%=body.cantidad%> piezas</li>
+                    <li><b>Total:</b> MXN$<%=body.precio * body.cantidad%>.00</li>
+                </ul>
+            </article>
+            <article class="contenedor__datos">
+                <h2>Información Comprador</h2>
+                <ul>
+                    <li><b>Nombre del Cliente:</b> <%=body.nombre_cliente%></li>
+                    <li><b>No. Telefono:</b> <%=body.telefono%></li>
+                    <li><b>RFC:</b> <%=body.rfc%></li>
+                    <%if(body.membresia == 0){%>
+                        <li><b>Estado de Membresía:</b> Sin Membresía o Membresía Inactiva</li>
+                    <%}else{%>
+                        <li><b>Estado de Membresía:</b> Membresía Activá</li>
+                    <%}%>
+                </ul>
+            </article>
+            <article class="contenedor__datos">
+                <h2>Dirección de Envio</h2>
+                <ul>
+                    <li><b>Estado:</b> <%=body.direccion_estado%></li>
+                    <li><b>Municipio:</b> <%=body.direccion_municipio%></li>
+                    <li><b>Codigo Postal:</b> <%=body.direccion_cp%></li>
+                    <li><b>Colonia:</b> <%=body.direccion_colonia%></li>
+                    <li><b>Calle:</b> <%=body.direccion_calle%></li>
+                    
+                </ul>
+            </article>
+            <article class="contenedor__buttons">
+                <button onclick="history.back()" class="button-pedido button-pedido--back">Volver</button>
+                <form method="POST" action="/delete-pedido/<%= body.ID_pedido %>">
+                    <button class="button-pedido button-pedido--delete">Borrar</button>
+                </form>
+            </article>
+        </main>
+        <%})%>
+    </div>
+</body>
+</html>

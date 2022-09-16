@@ -1,0 +1,31 @@
+<aside id="sidebar" class="sidebar --ver">
+    <div>
+        <img src="/img/logo.png" alt="">
+        <a class="enlace__sidebar" href="/productos"><i class="fa-solid fa-box"></i> Productos</a>
+        <a class="enlace__sidebar" href="/usuarios"><i class="fa-solid fa-people-group"></i> Usuarios de Membresia</a>
+        <div class="divEnlaces">
+            <a class="enlace__sidebar"><i class="fa-solid fa-truck"></i> Pedidos</a>
+            <a href="/pedidos/all" class="subenlace__sidebar">Todos los Pedidos</a>
+            <a href="/pedidos/mbr" class="subenlace__sidebar">Pedidos con Membresia</a>
+            <a href="/pedidos/sinMbr" class="subenlace__sidebar">Pedidos sin Membresia</a>
+        </div>
+        <a class="enlace__sidebar" href="/configuracion-extra"><i class="fa-solid fa-screwdriver-wrench"></i> Configuraciones Extra</a>
+    </div>
+    <form action="/salir-admin" method="POST"><button class="enlace__sidebar" style=" border: none;background: transparent;color: white; cursor: pointer;font-size: 2rem; text-align: center;width: 100%;"><i class="fa-solid fa-door-open"></i> Cerrar Sesión</button></form>
+</aside>
+<div onclick="cerrarMenu()" id="bg" class="bgSidebar --ver"></div>
+
+<script>
+    const menu = document.getElementById('sidebar');
+    const bg = document.getElementById('bg')
+
+    function abrirMenu(){
+        menu.classList.remove('--ver')
+        bg.classList.remove('--ver')
+    }
+    function cerrarMenu(){
+        menu.classList.add('--ver')
+        bg.classList.add('--ver')
+    }
+
+</script>

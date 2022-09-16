@@ -1,0 +1,46 @@
+<html>
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/header.ejs') %>
+        <%- include('./partials/sidebar.ejs') %>
+        
+        <main class="container tabla-container-extras">
+            <h1 class="centrar-texto">Suscripciones y Mensualidades</h1>
+            <div class="table-precios">
+                <table >
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Precio</th>
+                            <th style="width: 100px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Suscripción</td>
+                            <form action="/update-precio/<%=id1%>" method="POST">
+                                <td>   
+                                    $<input style="width: 100px;text-align: center;" type="number" name="precio" value="<%=priceSus%>">
+                                </td>
+                                <td>
+                                    <button class="button update">Actualizar</button>
+                                </td>
+                            </form>
+                        </tr>
+                        <tr>
+                            <td>Mensualidad</td>
+                            <form action="/update-precio/<%=id2%>" method="POST">
+                                <td>   
+                                    $<input style="width: 100px;text-align: center;" type="number" name="precio" value="<%=priceMbr%>">
+                                </td>
+                                <td>
+                                    <button class="button update">Actualizar</button>
+                                </td>
+                            </form>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </script>
+</html>

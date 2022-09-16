@@ -1,0 +1,156 @@
+<html>
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <style>
+            .btn-add{
+                display: block;
+                text-decoration: none;
+                font-size: 1.3rem;
+                border: solid 1px ;
+                text-align: center;
+                padding: 8px;
+                border-radius: 5px;
+                color: #0F2739;
+                transition: all .3s ease;
+            }
+            .btn-add:hover{
+                background: #0F2739;
+                color: white;
+            }
+            .newUser{
+                width: 90%;
+                max-width: 450px;
+                display: block;
+                margin: auto;
+                background-color: #0F2739;
+                padding: 1rem;
+                color: white;
+                margin-bottom: 2rem;
+            }
+            legend{
+                font-size: 2rem;
+            }
+            .newUser div{
+                margin-bottom: 1rem;
+            }
+            .newUser button{
+                display: block;
+                font-size: 1.8rem;
+                padding: 5px;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            .form-regist input{
+                display: block;
+                width: 100%;
+                padding: 5px;
+                font-size: 1.3rem;
+            }
+            .form-regist input:focus{
+                border-radius: 5px;
+                outline: none;
+            }
+            .form-regist label{
+                font-size: 1.6rem;
+            }
+            .info-input{
+                font-size: 1rem !important; 
+            }
+        </style>
+        <%- include('./partials/header.ejs') %>
+        <%- include('./partials/sidebar.ejs') %>
+        <main class="container">
+            <h1>Usuarios de Membresia</h1>
+            <a class="btn-add" href="#newUser"><i class="fa-regular fa-address-card"></i> Agregar Cliente</a>
+            <hr>
+            <input style="width: 100%;max-width: 400px; display: block; margin: auto; font-size: 1.2rem; padding: 5px; border: none; margin-top: 1rem;" class="form-control" type="text" placeholder="Buscar Cliente" id="MiEntrada">
+            <div class="contendorTableScroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Telefono</th>
+                            <th>Membresia</th>
+                            <th>Fecha de Vencimiento</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="Tabla">
+                        <% results.forEach(user => {%>
+                        <tr>
+                            <td><%= user.nombre_completo %></td>
+                            <td><%= user.correo %></td>
+                            <td><%= user.telefono %></td>
+                            <td>
+                                <i class="fa-solid fa-check membresiaCheck"></i>
+                                <input class="checkNum" type="hidden" value="<%= user.membresiaEstatus %>">
+                            </td>
+                            <td><%= user.fechaExp %></td>
+                            <td class="accion">
+                                <form action="/delete-cliente/<%= user.ID_usuario %>" method="POST">
+                                <button class="btnFormPedidos btn--eliminar"><i class="fa-solid fa-person-circle-minus"></i> <label class="textoDesaparecer"> Eliminar</label></button>
+                            </form></td>
+                        </tr>
+                        <%})%>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <form id="newUser" class="newUser" action="/insert-cliente" method="POST">
+            <fieldset>
+                <legend>Registro Nuevo</legend>
+                <div class="form-regist">
+                    <label for="name">Nombre Completo</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div class="form-regist">
+                    <label for="correo">Correo</label>
+                    <input type="email" name="correo" id="correo">
+                </div>
+                <div class="form-regist">
+                    <label for="tel">Teléfono</label>
+                    <input type="tel" name="tel" id="tel">
+                </div>
+                <div class="form-regist">
+                    <label for="pass">Contraseña</label>
+                    <input type="text" name="pass" id="pass">
+                </div>
+                <div class="form-regist">
+                    <label for="fecha">Fecha Expiración</label>
+                    <input type="text" placeholder="AAAA-MM-DD" name="fecha" id="fecha">
+                    <label class="info-input">Es importante escribir primero el año después el mes y al final el día</label>
+                </div>
+                <button type="submit">Agregar Registro</button>
+            </fieldset>
+        </form>
+        
+    </body>
+    <script>
+        icon = document.querySelector('.membresiaCheck')
+        check = document.querySelector('.checkNum')
+
+        if(check.value == 1){
+            icon.classList.add('fa-check')
+            icon.classList.remove('fa-x')
+            icon.style.color="green"
+        }else if(check.value == 0){
+            icon.classList.remove('fa-check')
+            icon.classList.add('fa-x')
+            icon.style.color="red"
+        }
+    </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#MiEntrada").on("keyup",function(){
+                    var value = $(this).val().toLowerCase();
+                    $("#Tabla tr").filter(function(){
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+</html>
+
